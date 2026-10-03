@@ -45,7 +45,7 @@ header p {
 }
 
 /* Desktop: horizontal Flexbox timeline */
-section {
+.timeline {
   display: flex;
   gap: 24px;
   max-width: 1200px;
@@ -57,7 +57,7 @@ section {
   scroll-padding-inline: 24px;
 }
 
-section > div {
+.timeline > div {
   position: relative;
   flex: 0 0 300px;
   padding: 24px;
@@ -69,21 +69,21 @@ section > div {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-section h2 {
+.timeline h2 {
   margin: 0;
   color: #0071c5;
   font-size: 2.3rem;
   line-height: 1.2;
 }
 
-section h3 {
+.timeline h3 {
   min-height: 52px;
   margin: 10px 0 20px;
   font-size: 1.2rem;
   line-height: 1.4;
 }
 
-section img {
+.timeline img {
   display: block;
   width: 100%;
   height: 160px;
@@ -92,7 +92,7 @@ section img {
 }
 
 /* Details are hidden until hover or keyboard focus */
-section > div > p {
+.timeline > div > p {
   max-height: 0;
   margin: 0;
   overflow: hidden;
@@ -105,21 +105,21 @@ section > div > p {
     transform 0.4s ease;
 }
 
-section > div:hover,
-section > div:focus {
+.timeline > div:hover,
+.timeline > div:focus {
   transform: translateY(-6px);
   box-shadow: 0 14px 28px rgba(0, 60, 113, 0.15);
 }
 
-section > div:hover > p,
-section > div:focus > p {
+.timeline > div:hover > p,
+.timeline > div:focus > p {
   max-height: 400px;
   margin-top: 20px;
   opacity: 1;
   transform: translateY(0);
 }
 
-section > div:focus-visible {
+.timeline > div:focus-visible {
   outline: 3px solid #0071c5;
   outline-offset: 4px;
 }
@@ -138,7 +138,7 @@ body > p {
     padding: 40px 24px 48px;
   }
 
-  section {
+  .timeline {
     flex-direction: column;
     overflow-x: visible;
     scroll-snap-type: none;
@@ -146,23 +146,23 @@ body > p {
     margin-top: 16px;
   }
 
-  section > div {
+  .timeline > div {
     flex: 0 1 auto;
     width: 100%;
   }
 
-  section h3 {
+  .timeline h3 {
     min-height: 0;
   }
 
-  section img {
+  .timeline img {
     height: 200px;
   }
 }
 
 /* Touch devices: keep details readable without hover */
 @media (hover: none) {
-  section > div > p {
+  .timeline > div > p {
     max-height: none;
     margin-top: 20px;
     opacity: 1;
@@ -171,12 +171,180 @@ body > p {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  section {
+  .timeline {
     scroll-behavior: auto;
   }
 
-  section > div,
-  section > div > p {
+  .timeline > div,
+  .timeline > div > p {
     transition: none;
+  }
+}
+
+/* Readable colors and direction-aware alignment */
+body {
+  text-align: start;
+}
+
+.timeline h2 {
+  color: #005a9c;
+}
+
+.timeline-help {
+  padding: 0 24px 24px;
+  color: #40576a;
+  text-align: center;
+}
+
+.section-heading,
+.language-panel h2,
+.newsletter h2 {
+  margin-bottom: 20px;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: #003c71;
+}
+
+.language-panel,
+.newsletter-inner {
+  max-width: 760px;
+  margin-inline: auto;
+  padding: 28px;
+  background: white;
+  border: 1px solid #d6e4ee;
+  border-radius: 12px;
+}
+
+.language-panel .form-select {
+  max-width: 440px;
+}
+
+.priority-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 28px;
+  background: white;
+  border: 1px solid #d6e4ee;
+  border-block-start: 5px solid #0071c5;
+  border-radius: 12px;
+}
+
+.priority-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  color: #003c71;
+}
+
+.priority-card i {
+  font-size: 1.6rem;
+}
+
+.priority-card .btn {
+  align-self: flex-start;
+}
+
+.btn-primary {
+  --bs-btn-bg: #005a9c;
+  --bs-btn-border-color: #005a9c;
+  --bs-btn-hover-bg: #003c71;
+  --bs-btn-hover-border-color: #003c71;
+  --bs-btn-active-bg: #003c71;
+  --bs-btn-active-border-color: #003c71;
+}
+
+.accordion-button {
+  color: #193449;
+  font-weight: 700;
+}
+
+.accordion-button:not(.collapsed) {
+  background: #e3f4ff;
+  color: #003c71;
+}
+
+.accordion-item {
+  scroll-margin-block-start: 24px;
+}
+
+.newsletter {
+  padding-block: 48px;
+  background: #e3eef6;
+}
+
+.form-label,
+.form-check-label {
+  color: #193449;
+}
+
+.form-label {
+  font-weight: 700;
+}
+
+.form-text {
+  color: #40576a;
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+  border-color: #657b8c;
+}
+
+.site-footer {
+  padding-block: 32px;
+  background: #003c71;
+  color: white;
+}
+
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+}
+
+.site-footer a {
+  color: white;
+  text-underline-offset: 4px;
+}
+
+:where(a, button, input, select):focus-visible {
+  outline: 3px solid #005a9c;
+  outline-offset: 4px;
+}
+
+.site-footer a:focus-visible {
+  outline-color: white;
+}
+
+.skip-link {
+  position: absolute;
+  inset-block-start: 8px;
+  inset-inline-start: 8px;
+  z-index: 1000;
+  padding: 12px 20px;
+  background: white;
+  color: #003c71;
+  transform: translateY(-160%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+html[dir="rtl"] h1 {
+  letter-spacing: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
   }
 }
